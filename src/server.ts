@@ -1,8 +1,8 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const userRoutes = require('./routes/userRoutes');
+import express, { Express, Request, Response } from 'express';
+import connectDB from './config/db';
+import userRoutes from './routes/userRoutes';
 
-const app = express();
+const app: Express = express();
 
 // Connect to MongoDB
 connectDB();
@@ -15,11 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', userRoutes);
 
 // Basic route
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('API is running...');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT: number = parseInt(process.env.PORT || '5000', 10);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
