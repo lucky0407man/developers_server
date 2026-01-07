@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import connectDB from './config/db';
 import userRoutes from './routes/userRoutes';
 
@@ -8,6 +9,7 @@ const app: Express = express();
 connectDB();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
