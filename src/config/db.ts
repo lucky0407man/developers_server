@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
+import 'dotenv/config';
+const mongo_URI = process.env.MONGODB_URI;
 
 const connectDB = async (): Promise<void> => {
   try {
-    await mongoose.connect(process.env.mongoURI || 'mongodb://localhost:27017/users', {
+    await mongoose.connect(mongo_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as mongoose.ConnectOptions);
