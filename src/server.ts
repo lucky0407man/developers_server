@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import connectDB from './config/db';
 import userRoutes from './routes/userRoutes';
+import 'dotenv/config';
 
 const app: Express = express();
 
@@ -21,8 +22,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('API is running...');
 });
 
-const PORT: number = parseInt(process.env.PORT || '5000', 10);
-
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
